@@ -18,9 +18,9 @@ public final class Constants {
   public static class FLOOR {
 
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
-    .idleMode(IdleMode.kCoast)
-    .inverted(false)
-    .smartCurrentLimit(20,20);
+        .idleMode(IdleMode.kCoast)
+        .inverted(false)
+        .smartCurrentLimit(20, 20);
 
     public static final double AXIS_MAX_SPEED = 0.25;
   }
