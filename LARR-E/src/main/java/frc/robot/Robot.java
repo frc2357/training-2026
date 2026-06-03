@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.Floor;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -20,12 +21,15 @@ public class Robot extends TimedRobot {
 
  private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
+      
+      public static Floor floor;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
   public Robot() {
    // m_example = new example();
+   floor = new Floor();
   }
 
   /**
