@@ -4,8 +4,12 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Value;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+
+import edu.wpi.first.units.measure.Dimensionless;
+
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 public final class Constants {
@@ -22,7 +26,7 @@ public final class Constants {
         .inverted(false)
         .smartCurrentLimit(20, 20);
 
-    public static final double AXIS_MAX_SPEED = 0.25;
+    public static final Dimensionless AXIS_MAX_SPEED = Value.of(0.25);
   }
 
   public static class OperatorConstants {

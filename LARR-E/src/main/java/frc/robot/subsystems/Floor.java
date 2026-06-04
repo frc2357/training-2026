@@ -27,12 +27,12 @@ public class Floor extends SubsystemBase {
                 PersistMode.kNoPersistParameters);
     }
 
-    public void setSpeed(Supplier<Dimensionless> m_speed) {
-        m_motor.set(m_speed.get().in(Value));
+    public void setSpeed(Dimensionless m_speed) {
+        m_motor.set(m_speed.in(Value));
     }
 
-    public void setAxisSpeed(double axisSpeed) {
-        axisSpeed *= FLOOR.AXIS_MAX_SPEED;
+    public void setAxisSpeed(Supplier<Dimensionless> axisSpeed) {
+        setSpeed(axisSpeed.get());
     }
 
     public void stop() {
