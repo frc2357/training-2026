@@ -26,7 +26,6 @@ public final class Constants {
         .inverted(false)
         .smartCurrentLimit(20, 20);
 
-    public static final Dimensionless AXIS_MAX_SPEED = Value.of(0.25);
   }
 
   public static class OperatorConstants {
