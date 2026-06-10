@@ -9,21 +9,26 @@ import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 import edu.wpi.first.units.measure.Dimensionless;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 public final class Constants {
 
+  public static final class CONTROLLER {
+    public static final int TEST_CONTROLLER_PORT = 0;
+  }
+
   public static class CAN_ID {
-    public static final int FLOOR_MOTOR = 0;
+    public static final int FLOOR_MOTOR = 23;
 
   }
 
   public static class FLOOR {
 
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
-        .idleMode(IdleMode.kCoast)
-        .inverted(false)
+        .inverted(true)
+        .idleMode(IdleMode.kBrake)
         .smartCurrentLimit(20, 20);
 
   }
