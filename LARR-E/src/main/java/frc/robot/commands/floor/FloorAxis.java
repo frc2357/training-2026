@@ -17,7 +17,7 @@ public class FloorAxis extends Command {
 
     @Override
     public void execute() {
-        Robot.floor.setAxisSpeed((m_axis));
+        Robot.floor.setAxisSpeed(m_axis);
     }
 
     @Override
