@@ -3,10 +3,6 @@ package frc.robot.subsystems;
 import static edu.wpi.first.units.Units.Value;
 
 import java.util.function.Supplier;
-import edu.wpi.first.util.sendable.Sendable;
-import edu.wpi.first.util.sendable.SendableBuilder;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
@@ -25,7 +21,7 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-public class Floor extends SubsystemBase implements Sendable {
+public class Floor extends SubsystemBase {
 
     private SparkMax m_motor;
 
