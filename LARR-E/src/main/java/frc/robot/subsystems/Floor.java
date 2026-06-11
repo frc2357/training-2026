@@ -14,6 +14,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
 import frc.robot.Constants.CAN_ID;
 import frc.robot.Constants.FLOOR;
 import com.revrobotics.spark.SparkMax;
@@ -24,7 +25,7 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-public class Floor extends SubsystemBase {
+public class Floor extends SubsystemBase implements Sendable {
 
     private SparkMax m_motor;
 
@@ -49,12 +50,4 @@ public class Floor extends SubsystemBase {
     public void stop() {
         m_motor.stopMotor();
     }
-
-    /*
-     * * public void initSendable(SendableBuilder builder) {
-     * builder.setSmartDashboardType("Floor IdleMode");
-     * builder.addBooleanProperty("IdleMode switch", m_motor.getIdleMode(),
-     * null);
-     * }
-     */
 }
