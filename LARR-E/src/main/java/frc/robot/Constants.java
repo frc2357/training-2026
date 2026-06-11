@@ -31,6 +31,7 @@ public final class Constants {
         .idleMode(IdleMode.kBrake)
         .smartCurrentLimit(20, 20);
 
+    public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
   }
 
   public static class OperatorConstants {

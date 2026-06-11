@@ -15,8 +15,8 @@ public class FloorStop extends Command {
     }
 
     @Override
-    public void end(boolean interupted) {
+    public void end(boolean interrupted) {
         Robot.floor.stop();
     }
-    
+
 }

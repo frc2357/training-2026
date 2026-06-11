@@ -44,7 +44,7 @@ public class Floor extends SubsystemBase implements Sendable {
     }
 
     public void setAxisSpeed(Supplier<Dimensionless> axisSpeed) {
-        setSpeed(axisSpeed.get());
+        setSpeed(axisSpeed.get().times(FLOOR.AXIS_MAX_SPEED));
     }
 
     public void stop() {

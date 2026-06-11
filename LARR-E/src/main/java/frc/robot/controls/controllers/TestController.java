@@ -19,10 +19,10 @@ public class TestController {
     }
 
     public void mapControls() {
-        m_controller.a().onTrue(new FloorAxis(this::getleftx));
+        m_controller.a().onTrue(new FloorAxis(this::getLeftX));
     }
 
-    public Dimensionless getleftx() {
+    public Dimensionless getLeftX() {
         return Value.of(m_controller.getLeftX());
     }
 }
