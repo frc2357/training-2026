@@ -4,15 +4,36 @@
 
 package frc.robot;
 
-/**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants. This class should not be used for any other purpose. All constants should be declared
- * globally (i.e. public static). Do not put anything functional in this class.
- *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
- * constants are needed, to reduce verbosity.
- */
+import static edu.wpi.first.units.Units.Value;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+
+import edu.wpi.first.units.measure.Dimensionless;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.revrobotics.spark.config.SparkMaxConfig;
+
 public final class Constants {
+
+  public static final class CONTROLLER {
+    public static final int TEST_CONTROLLER_PORT = 0;
+  }
+
+  public static class CAN_ID {
+    public static final int FLOOR_MOTOR = 23;
+
+  }
+
+  public static class FLOOR {
+
+    public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
+        .inverted(true)
+        .idleMode(IdleMode.kBrake)
+        .smartCurrentLimit(20, 20);
+
+    public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
+  }
+
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
