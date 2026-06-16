@@ -21,6 +21,7 @@ public class TestController {
 
     public void mapControls() {
         m_controller.a().onTrue(new TunnelAxis(this::getLeftX));
+        m_controller.b().onTrue(new FloorAxis(this::getLeftX));
     }
 
     public Dimensionless getLeftX() {

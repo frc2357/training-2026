@@ -21,7 +21,7 @@ public class TunnelAxis extends Command {
 
     @Override
     public void execute() {
-        Robot.tunnel.setAxisSpeed(m_axis);
+        Robot.tunnel.setAxisSpeed(m_axis.get());
     }
 
     @Override
