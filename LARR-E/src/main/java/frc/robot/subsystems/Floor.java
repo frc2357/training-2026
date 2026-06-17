@@ -39,8 +39,8 @@ public class Floor extends SubsystemBase {
         m_motor.set(m_speed.in(Value));
     }
 
-    public void setAxisSpeed(Supplier<Dimensionless> axisSpeed) {
-        setSpeed(axisSpeed.get().times(FLOOR.AXIS_MAX_SPEED));
+    public void setAxisSpeed(Dimensionless axisSpeed) {
+        setSpeed(axisSpeed.times(FLOOR.AXIS_MAX_SPEED));
     }
 
     public void stop() {
