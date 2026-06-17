@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.controls.controllers.TestController;
 import frc.robot.subsystems.Floor;
+import frc.robot.subsystems.Tunnel;
 
 /**
  * The methods in this class are called automatically corresponding to each
@@ -26,6 +27,7 @@ public class Robot extends TimedRobot {
 
   public static TestController testControls;
   public static Floor floor;
+  public static Tunnel tunnel;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -35,6 +37,7 @@ public class Robot extends TimedRobot {
   public Robot() {
     // m_example = new example();
     floor = new Floor();
+    tunnel = new Tunnel();
 
     testControls = new TestController(
         new CommandXboxController(Constants.CONTROLLER.TEST_CONTROLLER_PORT));

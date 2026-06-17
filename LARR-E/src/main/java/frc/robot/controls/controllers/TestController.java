@@ -8,6 +8,7 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.floor.FloorAxis;
+import frc.robot.commands.tunnel.TunnelAxis;
 
 public class TestController {
 
@@ -19,7 +20,8 @@ public class TestController {
     }
 
     public void mapControls() {
-        m_controller.a().onTrue(new FloorAxis(this::getLeftX));
+        m_controller.a().onTrue(new TunnelAxis(this::getLeftX));
+        m_controller.b().onTrue(new FloorAxis(this::getLeftX));
     }
 
     public Dimensionless getLeftX() {

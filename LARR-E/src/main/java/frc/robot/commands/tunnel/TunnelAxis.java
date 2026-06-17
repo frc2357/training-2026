@@ -1,23 +1,27 @@
-package frc.robot.commands.floor;
+package frc.robot.commands.tunnel;
+
+import static edu.wpi.first.units.Units.Value;
 
 import java.util.function.Supplier;
 
 import edu.wpi.first.units.measure.Dimensionless;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Robot;
 
-public class FloorAxis extends Command {
+public class TunnelAxis extends Command {
 
     private Supplier<Dimensionless> m_axis;
 
-    public FloorAxis(Supplier<Dimensionless> axis) {
+    public TunnelAxis(Supplier<Dimensionless> axis) {
         m_axis = axis;
-        addRequirements(Robot.floor);
+        addRequirements(Robot.tunnel);
+
     }
 
     @Override
     public void execute() {
-        Robot.floor.setAxisSpeed(m_axis.get());
+        Robot.tunnel.setAxisSpeed(m_axis.get());
     }
 
     @Override
@@ -27,6 +31,6 @@ public class FloorAxis extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        Robot.floor.stop();
+        Robot.tunnel.stop();
     }
 }
