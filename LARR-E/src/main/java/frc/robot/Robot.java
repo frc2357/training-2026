@@ -12,7 +12,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.controls.controllers.TestController;
+import frc.robot.commands.drive.DefaultDrive;
+import frc.robot.controls.DriverControls;
+import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.Floor;
 import frc.robot.subsystems.Tunnel;
 
@@ -25,9 +27,10 @@ import frc.robot.subsystems.Tunnel;
  */
 public class Robot extends TimedRobot {
 
-  public static TestController testControls;
+  public static DriverControls driverControls;
   public static Floor floor;
   public static Tunnel tunnel;
+  public static CommandSwerveDrivetrain swerve;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -35,12 +38,15 @@ public class Robot extends TimedRobot {
    * initialization code.
    */
   public Robot() {
+    swerve = TunerConstants.createDrivetrain();
     // m_example = new example();
     floor = new Floor();
     tunnel = new Tunnel();
 
-    testControls = new TestController(
-        new CommandXboxController(Constants.CONTROLLER.TEST_CONTROLLER_PORT));
+    driverControls = new DriverControls(
+        new CommandXboxController(Constants.CONTROLLER.DRIVE_CONTROLLER_PORT));
+
+    swerve.setDefaultCommand(new DefaultDrive());
   }
 
   /**
