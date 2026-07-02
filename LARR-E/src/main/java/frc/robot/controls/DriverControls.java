@@ -16,7 +16,6 @@ public class DriverControls {
     }
 
     public void mapControls() {
-
     }
 
     public Dimensionless getLeftX() {

@@ -35,7 +35,7 @@ public final class Constants {
 
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
         .inverted(true)
-        .idleMode(IdleMode.kBrake)
+        .idleMode(IdleMode.kCoast)
         .smartCurrentLimit(20, 20);
 
     public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
@@ -45,7 +45,7 @@ public final class Constants {
 
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
         .inverted(true)
-        .idleMode(IdleMode.kBrake)
+        .idleMode(IdleMode.kCoast)
         .smartCurrentLimit(30, 20);
 
     public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
@@ -54,7 +54,7 @@ public final class Constants {
   public static class FEEDER {
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
         .inverted(true)
-        .idleMode(IdleMode.kBrake)
+        .idleMode(IdleMode.kCoast)
         .smartCurrentLimit(20, 20);
 
     public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
