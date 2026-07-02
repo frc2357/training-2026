@@ -15,6 +15,7 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.drive.DefaultDrive;
 import frc.robot.controls.DriverControls;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.Floor;
 import frc.robot.subsystems.Tunnel;
 
@@ -30,6 +31,7 @@ public class Robot extends TimedRobot {
   public static DriverControls driverControls;
   public static Floor floor;
   public static Tunnel tunnel;
+  public static Feeder feeder;
   public static CommandSwerveDrivetrain swerve;
 
   /**
@@ -42,6 +44,7 @@ public class Robot extends TimedRobot {
     // m_example = new example();
     floor = new Floor();
     tunnel = new Tunnel();
+    feeder = new Feeder();
 
     driverControls = new DriverControls(
         new CommandXboxController(Constants.CONTROLLER.DRIVE_CONTROLLER_PORT));
