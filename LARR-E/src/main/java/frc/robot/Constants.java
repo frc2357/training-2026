@@ -24,6 +24,7 @@ public final class Constants {
   public static class CAN_ID {
     public static final int FLOOR_MOTOR = 23;
     public static final int TUNNEL_MOTOR = 34;
+    public static final int FEEDER_MOTOR = 32;
   }
 
   public static final class SWERVE {
@@ -34,7 +35,7 @@ public final class Constants {
 
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
         .inverted(true)
-        .idleMode(IdleMode.kBrake)
+        .idleMode(IdleMode.kCoast)
         .smartCurrentLimit(20, 20);
 
     public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
@@ -43,9 +44,18 @@ public final class Constants {
   public static class TUNNEL {
 
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
-        .inverted(false)
-        .idleMode(IdleMode.kBrake)
+        .inverted(true)
+        .idleMode(IdleMode.kCoast)
         .smartCurrentLimit(30, 20);
+
+    public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
+  }
+
+  public static class FEEDER {
+    public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
+        .inverted(true)
+        .idleMode(IdleMode.kCoast)
+        .smartCurrentLimit(20, 20);
 
     public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
   }

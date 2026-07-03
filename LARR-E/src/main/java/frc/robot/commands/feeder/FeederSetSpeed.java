@@ -1,0 +1,29 @@
+package frc.robot.commands.feeder;
+
+import edu.wpi.first.units.measure.Dimensionless;
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Robot;
+
+public class FeederSetSpeed extends Command {
+    private Dimensionless m_speed;
+
+    public FeederSetSpeed(Dimensionless speed) {
+        addRequirements(Robot.feeder);
+        m_speed = speed;
+    }
+
+    @Override
+    public void initialize() {
+        Robot.feeder.setSpeed(m_speed);
+    }
+
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
+
+    @Override
+    public void end(boolean interrupted) {
+        Robot.feeder.stop();
+    }
+}
