@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.drive.DefaultDrive;
-import frc.robot.controls.util.DriverConstants;
+import frc.robot.controls.DriverConstants;
 import frc.robot.controls.DriverControls;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.subsystems.drivetrain.TunerConstants;
@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
     feeder = new Feeder();
 
     driverControls = new DriverControls(
-        new CommandXboxController(DriverConstants.CONTROLLER.DRIVE_CONTROLLER_PORT));
+        new CommandXboxController(DriverConstants.DRIVE_CONTROLLER_PORT));
 
     swerve.setDefaultCommand(new DefaultDrive());
   }

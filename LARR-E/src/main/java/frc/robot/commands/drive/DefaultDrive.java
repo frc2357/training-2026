@@ -5,8 +5,8 @@ import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.Value;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.drivetrain.TunerConstants;
 import frc.robot.subsystems.drivetrain.SwerveConstants;
+import frc.robot.subsystems.drivetrain.TunerConstants;
 
 public class DefaultDrive extends Command {
 
