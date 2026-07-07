@@ -1,16 +1,13 @@
-package frc.robot.subsystems;
+package frc.robot.subsystems.feeder;
 
 import static edu.wpi.first.units.Units.Value;
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkMax;
-import frc.robot.Constants.CAN_ID;
-import frc.robot.Constants.FEEDER;
-
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-
 import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.constants.CanID;
 
 public class Feeder extends SubsystemBase {
 
@@ -18,10 +15,10 @@ public class Feeder extends SubsystemBase {
 
     public Feeder() {
 
-        m_motor = new SparkMax(CAN_ID.FEEDER_MOTOR, MotorType.kBrushless);
+        m_motor = new SparkMax(CanID.FEEDER_MOTOR, MotorType.kBrushless);
 
         m_motor.configure(
-                FEEDER.MOTOR_CONFIG,
+                FeederConstants.MOTOR_CONFIG,
                 ResetMode.kNoResetSafeParameters,
                 PersistMode.kNoPersistParameters);
     }
@@ -31,7 +28,7 @@ public class Feeder extends SubsystemBase {
     }
 
     public void setAxisSpeed(Dimensionless axisSpeed) {
-        setSpeed(axisSpeed.times(FEEDER.AXIS_MAX_SPEED));
+        setSpeed(axisSpeed.times(FeederConstants.AXIS_MAX_SPEED));
     }
 
     public void stop() {
