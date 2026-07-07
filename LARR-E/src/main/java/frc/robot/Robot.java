@@ -4,20 +4,17 @@
 
 package frc.robot;
 
-import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
-
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.drive.DefaultDrive;
+import frc.robot.controls.util.DriverConstants;
 import frc.robot.controls.DriverControls;
-import frc.robot.subsystems.CommandSwerveDrivetrain;
-import frc.robot.subsystems.Feeder;
-import frc.robot.subsystems.Floor;
-import frc.robot.subsystems.Tunnel;
+import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
+import frc.robot.subsystems.drivetrain.TunerConstants;
+import frc.robot.subsystems.feeder.Feeder;
+import frc.robot.subsystems.floor.Floor;
+import frc.robot.subsystems.tunnel.Tunnel;
 
 /**
  * The methods in this class are called automatically corresponding to each
@@ -47,7 +44,7 @@ public class Robot extends TimedRobot {
     feeder = new Feeder();
 
     driverControls = new DriverControls(
-        new CommandXboxController(Constants.CONTROLLER.DRIVE_CONTROLLER_PORT));
+        new CommandXboxController(DriverConstants.CONTROLLER.DRIVE_CONTROLLER_PORT));
 
     swerve.setDefaultCommand(new DefaultDrive());
   }

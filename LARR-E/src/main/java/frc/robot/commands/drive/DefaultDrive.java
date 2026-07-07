@@ -4,9 +4,9 @@ import static edu.wpi.first.units.Units.MetersPerSecond;
 import static edu.wpi.first.units.Units.RadiansPerSecond;
 import static edu.wpi.first.units.Units.Value;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
 import frc.robot.Robot;
-import frc.robot.TunerConstants;
+import frc.robot.subsystems.drivetrain.TunerConstants;
+import frc.robot.subsystems.drivetrain.SwerveConstants;
 
 public class DefaultDrive extends Command {
 
@@ -25,7 +25,7 @@ public class DefaultDrive extends Command {
         Robot.swerve.driveFieldRelative(
                 y * m_speedAt12VoltMPS,
                 x * m_speedAt12VoltMPS,
-                rotation * Constants.SWERVE.MAX_ANGULAR_VELOCITY.in(RadiansPerSecond)
+                rotation * SwerveConstants.SWERVE.MAX_ANGULAR_VELOCITY.in(RadiansPerSecond)
 
         );
     }
