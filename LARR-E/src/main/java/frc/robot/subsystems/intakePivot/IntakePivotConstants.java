@@ -13,5 +13,5 @@ public class IntakePivotConstants {
             .idleMode(IdleMode.kBrake)
             .smartCurrentLimit(40, 20);
 
-    public static final Dimensionless AXIS_MAX_SPEED = Value.of(30);
+    public static final Dimensionless AXIS_MAX_SPEED = Value.of(10);
 }
