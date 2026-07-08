@@ -14,6 +14,7 @@ import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
 import frc.robot.subsystems.drivetrain.TunerConstants;
 import frc.robot.subsystems.feeder.Feeder;
 import frc.robot.subsystems.floor.Floor;
+import frc.robot.subsystems.intakePivot.IntakePivot;
 import frc.robot.subsystems.tunnel.Tunnel;
 
 /**
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
   public static Floor floor;
   public static Tunnel tunnel;
   public static Feeder feeder;
+  public static IntakePivot intakePivot;
   public static CommandSwerveDrivetrain swerve;
 
   /**
@@ -42,6 +44,7 @@ public class Robot extends TimedRobot {
     floor = new Floor();
     tunnel = new Tunnel();
     feeder = new Feeder();
+    intakePivot = new IntakePivot();
 
     driverControls = new DriverControls(
         new CommandXboxController(DriverConstants.DRIVE_CONTROLLER_PORT));

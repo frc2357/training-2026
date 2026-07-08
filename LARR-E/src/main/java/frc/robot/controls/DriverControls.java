@@ -4,6 +4,7 @@ import static edu.wpi.first.units.Units.Value;
 
 import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.intakePivot.IntakePivotAxis;
 
 public class DriverControls {
 
@@ -16,6 +17,8 @@ public class DriverControls {
     }
 
     public void mapControls() {
+        m_controller.rightTrigger().whileTrue(new IntakePivotAxis(() -> Value.of(m_controller.getRightTriggerAxis())));
+        m_controller.leftTrigger().whileTrue(new IntakePivotAxis(() -> Value.of(-m_controller.getLeftTriggerAxis())));
     }
 
     public Dimensionless getLeftX() {

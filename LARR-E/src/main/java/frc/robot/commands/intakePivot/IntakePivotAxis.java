@@ -1,22 +1,23 @@
-package frc.robot.commands.floor;
+package frc.robot.commands.intakePivot;
 
 import java.util.function.Supplier;
 import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Robot;
 
-public class FloorAxis extends Command {
+public class IntakePivotAxis extends Command {
 
     private Supplier<Dimensionless> m_axis;
 
-    public FloorAxis(Supplier<Dimensionless> axis) {
+    public IntakePivotAxis(Supplier<Dimensionless> axis) {
         m_axis = axis;
-        addRequirements(Robot.floor);
+        addRequirements(Robot.intakePivot);
     }
 
     @Override
     public void execute() {
-        Robot.floor.setAxisSpeed(m_axis.get());
+        Robot.intakePivot.setAxisSpeed(m_axis.get());
+
     }
 
     @Override
@@ -26,6 +27,6 @@ public class FloorAxis extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        Robot.floor.stop();
+        Robot.intakePivot.stop();
     }
 }
