@@ -1,20 +1,20 @@
-package frc.robot.commands.intakePivot;
+package frc.robot.commands.shooter;
 
 import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Robot;
 
-public class IntakePivotSetSpeed extends Command {
+public class ShooterSetSpeed extends Command {
     private Dimensionless m_speed;
 
-    public IntakePivotSetSpeed(Dimensionless speed) {
-        addRequirements(Robot.intakePivot);
+    public ShooterSetSpeed(Dimensionless speed) {
+        addRequirements(Robot.shooter);
         m_speed = speed;
     }
 
     @Override
     public void initialize() {
-        Robot.intakePivot.setSpeed(m_speed);
+        Robot.shooter.setSpeed(m_speed);
     }
 
     @Override
@@ -24,6 +24,6 @@ public class IntakePivotSetSpeed extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        Robot.intakePivot.stop();
+        Robot.shooter.stop();
     }
 }
