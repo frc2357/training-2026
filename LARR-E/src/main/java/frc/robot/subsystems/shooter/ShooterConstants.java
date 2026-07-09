@@ -11,14 +11,14 @@ import frc.robot.constants.CanID;
 
 public class ShooterConstants {
 
-    public static final SparkBaseConfig MOTOR_CONFIG_LEADER = new SparkMaxConfig()
+    public static final SparkBaseConfig LEFT_MOTOR_CONFIG = new SparkMaxConfig()
             .idleMode(IdleMode.kCoast)
             .inverted(false)
             .smartCurrentLimit(30, 30)
             .voltageCompensation(12);
 
-    public static final SparkBaseConfig MOTOR_CONFIG_FOLLOWER = new SparkMaxConfig().apply(MOTOR_CONFIG_LEADER)
-            .follow(CanID.SHOOTER_MOTOR_LEADER, true);
+    public static final SparkBaseConfig RIGHT_MOTOR_CONFIG = new SparkMaxConfig().apply(LEFT_MOTOR_CONFIG)
+            .follow(CanID.LEFT_SHOOTER_MOTOR, true);
 
     public static final Dimensionless AXIS_MAX_SPEED = Value.of(80);
 }

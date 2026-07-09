@@ -11,26 +11,26 @@ import frc.robot.constants.CanID;
 
 public class Shooter extends SubsystemBase {
 
-    private SparkMax m_motorLeader;
-    private SparkMax m_motorFollower;
+    private SparkMax m_leftMotor;
+    private SparkMax m_rightMotor;
 
     public Shooter() {
-        m_motorLeader = new SparkMax(CanID.SHOOTER_MOTOR_LEADER, MotorType.kBrushless);
-        m_motorFollower = new SparkMax(CanID.SHOOTER_MOTOR_FOLLOWER, MotorType.kBrushless);
+        m_leftMotor = new SparkMax(CanID.LEFT_SHOOTER_MOTOR, MotorType.kBrushless);
+        m_rightMotor = new SparkMax(CanID.RIGHT_SHOOTER_MOTOR, MotorType.kBrushless);
 
-        m_motorLeader.configure(
-                ShooterConstants.MOTOR_CONFIG_LEADER,
+        m_leftMotor.configure(
+                ShooterConstants.LEFT_MOTOR_CONFIG,
                 ResetMode.kNoResetSafeParameters,
                 PersistMode.kNoPersistParameters);
 
-        m_motorFollower.configure(
-                ShooterConstants.MOTOR_CONFIG_FOLLOWER,
+        m_rightMotor.configure(
+                ShooterConstants.RIGHT_MOTOR_CONFIG,
                 ResetMode.kNoResetSafeParameters,
                 PersistMode.kNoPersistParameters);
     }
 
     public void setSpeed(Dimensionless m_speed) {
-        m_motorLeader.set(m_speed.in(Value));
+        m_leftMotor.set(m_speed.in(Value));
     }
 
     public void setAxisSpeed(Dimensionless axisSpeed) {
@@ -38,6 +38,6 @@ public class Shooter extends SubsystemBase {
     }
 
     public void stop() {
-        m_motorLeader.stopMotor();
+        m_leftMotor.stopMotor();
     }
 }
