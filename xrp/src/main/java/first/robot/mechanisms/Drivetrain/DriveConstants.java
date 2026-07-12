@@ -1,4 +1,4 @@
-package first.robot.mechanisms.Drivetrain;
+package first.robot.mechanisms.drivetrain;
 
 import org.wpilib.units.Units;
 import org.wpilib.units.measure.Distance;

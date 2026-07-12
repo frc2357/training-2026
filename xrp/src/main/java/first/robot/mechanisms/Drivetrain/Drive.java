@@ -1,4 +1,4 @@
-package first.robot.mechanisms.Drivetrain;
+package first.robot.mechanisms.drivetrain;
 
 import static org.wpilib.units.Units.Inches;
 import static org.wpilib.units.Units.Value;
@@ -47,7 +47,7 @@ public class Drive extends Mechanism {
         resetEncoders();
     }
 
-    public void arcadeDrive(double velocity, double rotate) {
+    private void arcadeDrive(double velocity, double rotate) {
         m_diffDrive.arcadeDrive(velocity, rotate);
     }
 
