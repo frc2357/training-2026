@@ -32,10 +32,8 @@ public class Arm extends Mechanism {
         return this.run((coro) -> {
             setAngle(angle.get());
 
-            while (!MathUtil.isNear(angle.get().in(Degrees), armServo.getAngle(),
-                    ArmConstants.ARM_POSITION_TOLERANCE.in(Degrees))) {
-                coro.yield();
-            }
+            coro.waitUntil(() -> MathUtil.isNear(angle.get().in(Degrees), armServo.getAngle(),
+                    ArmConstants.ARM_POSITION_TOLERANCE.in(Degrees)));
         }).named("Set Arm Angle");
     }
 }
