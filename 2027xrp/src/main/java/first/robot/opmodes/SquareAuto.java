@@ -9,11 +9,11 @@ import org.wpilib.opmode.PeriodicOpMode;
 import first.robot.Robot;
 
 @Autonomous(name = "My Auto", group = "Group 1")
-public class MyAuto extends PeriodicOpMode {
+public class SquareAuto extends PeriodicOpMode {
   private final Robot robot;
 
   /** The Robot instance is passed into the opmode via the constructor. */
-  public MyAuto(Robot robot) {
+  public SquareAuto(Robot robot) {
     this.robot = robot;
   }
 

@@ -4,7 +4,11 @@
 
 package first.robot;
 
+import org.wpilib.command3.button.CommandNiDsXboxController;
 import org.wpilib.framework.OpModeRobot;
+
+import first.robot.mechanisms.arm.Arm;
+import first.robot.mechanisms.drivetrain.Drive;
 
 /**
  * The methods in this class are called automatically as described in the OpModeRobot documentation.
@@ -14,6 +18,12 @@ import org.wpilib.framework.OpModeRobot;
  * project.
  */
 public class Robot extends OpModeRobot {
+
+  public static  final CommandNiDsXboxController driverController = new CommandNiDsXboxController(ControllerConstants.DRIVER_CONTROLLER_PORT);
+
+  public static final Drive drive = new Drive();
+  public static final Arm arm = new Arm();
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.

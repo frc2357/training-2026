@@ -4,17 +4,25 @@
 
 package first.robot.opmodes;
 
+import static org.wpilib.units.Units.Value;
+
 import org.wpilib.opmode.PeriodicOpMode;
 import org.wpilib.opmode.Teleop;
 import first.robot.Robot;
 
 @Teleop
-public class MyTeleop extends PeriodicOpMode {
-  private final Robot robot;
+public class MatchTeleop extends PeriodicOpMode {
 
   /** The Robot instance is passed into the opmode via the constructor. */
-  public MyTeleop(Robot robot) {
-    this.robot = robot;
+  public MatchTeleop() {
+    System.out.println("opmode constructed");
+    ConfigureButtonBindings();
+    Robot.drive.setDefaultCommand(Robot.drive.arcadeDrive(() -> Value.of(Robot.driverController.getLeftY()),
+        () -> Value.of(Robot.driverController.getRightX())));
+  }
+
+  public void ConfigureButtonBindings() {
+
   }
 
   @Override
@@ -39,6 +47,8 @@ public class MyTeleop extends PeriodicOpMode {
 
   @Override
   public void close() {
-    /* Called when the opmode is de-selected / no additional methods will be called. */
+    /*
+     * Called when the opmode is de-selected / no additional methods will be called.
+     */
   }
 }
