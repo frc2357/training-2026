@@ -53,8 +53,11 @@ public class Drive extends Mechanism {
 
     public Command arcadeDrive(Supplier<Dimensionless> velocity, Supplier<Dimensionless> rotate) {
         return super.runRepeatedly(
-                () -> arcadeDrive(
-                        velocity.get().in(Value), rotate.get().in(Value)))
+                () -> {
+                    arcadeDrive(
+                            velocity.get().in(Value), rotate.get().in(Value));
+                          //  System.out.println("vel" + velocity.get().in(Value));
+                })
                 .withPriority(Command.LOWEST_PRIORITY)
                 .named("Split-Stick Arcade Drive");
 

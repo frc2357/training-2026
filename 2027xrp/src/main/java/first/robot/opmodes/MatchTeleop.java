@@ -6,6 +6,8 @@ package first.robot.opmodes;
 
 import static org.wpilib.units.Units.Value;
 
+import org.wpilib.command3.Command;
+import org.wpilib.command3.Trigger;
 import org.wpilib.opmode.PeriodicOpMode;
 import org.wpilib.opmode.Teleop;
 import first.robot.Robot;
@@ -14,7 +16,7 @@ import first.robot.Robot;
 public class MatchTeleop extends PeriodicOpMode {
 
   /** The Robot instance is passed into the opmode via the constructor. */
-  public MatchTeleop() {
+  public MatchTeleop(Robot robot) {
     System.out.println("opmode constructed");
     ConfigureButtonBindings();
     Robot.drive.setDefaultCommand(Robot.drive.arcadeDrive(() -> Value.of(Robot.driverController.getLeftY()),
@@ -22,6 +24,10 @@ public class MatchTeleop extends PeriodicOpMode {
   }
 
   public void ConfigureButtonBindings() {
+    Trigger userButton = new Trigger(Robot.xrpIO::getUserButtonPressed);
+    userButton
+        .onTrue(Command.noRequirements(coro -> System.out.println("User button pressed")).named("u1"))
+        .onFalse(Command.noRequirements(coro -> System.out.println("USER Button Released")).named("u2"));
 
   }
 
