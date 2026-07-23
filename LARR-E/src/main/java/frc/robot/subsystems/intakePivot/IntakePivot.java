@@ -15,14 +15,13 @@ import frc.robot.subsystems.intakePivot.IntakePivotConstants;
 public class IntakePivot extends SubsystemBase {
 
     private TalonFX m_motor;
-    private final DutyCycleOut m_dutyCycle = new DutyCycleOut(0);
 
     public IntakePivot() {
         m_motor = IntakePivotConstants.INTAKE_PIVOT_MOTOR;
     }
 
     public void setSpeed(Dimensionless m_speed) {
-        m_motor.setControl(m_dutyCycle.withOutput(m_speed.in(Value)));
+        m_motor.set(m_speed.in(Value));
     }
 
     public void setAxisSpeed(Dimensionless axisSpeed) {
@@ -32,5 +31,4 @@ public class IntakePivot extends SubsystemBase {
     public void stop() {
         m_motor.set(0.0);
     }
-
 }

@@ -22,7 +22,7 @@ public class IntakePivotConstants {
     private void configureMotor() {
         TalonFXConfiguration INTAKE_PIVOT_MOTOR_CONFIG = new TalonFXConfiguration();
         INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
+        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
 
         INTAKE_PIVOT_MOTOR.getConfigurator().apply(INTAKE_PIVOT_MOTOR_CONFIG);
     }
