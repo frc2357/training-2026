@@ -1,5 +1,6 @@
 package frc.robot.subsystems.floor;
 
+import static edu.wpi.first.units.Units.Percent;
 import static edu.wpi.first.units.Units.Value;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
@@ -14,5 +15,5 @@ public class FloorConstants {
             .idleMode(IdleMode.kCoast)
             .smartCurrentLimit(20, 20);
 
-    public static final Dimensionless AXIS_MAX_SPEED = Value.of(100);
+    public static final Dimensionless AXIS_MAX_SPEED = Percent.of(100);
 }

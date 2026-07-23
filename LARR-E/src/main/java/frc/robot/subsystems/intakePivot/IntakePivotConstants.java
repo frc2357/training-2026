@@ -1,5 +1,6 @@
 package frc.robot.subsystems.intakePivot;
 
+import static edu.wpi.first.units.Units.Percent;
 import static edu.wpi.first.units.Units.Value;
 import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
@@ -17,5 +18,5 @@ import frc.robot.constants.CanID;
 
 public class IntakePivotConstants {
 
-    public static final Dimensionless AXIS_MAX_SPEED = Value.of(10);
+    public static final Dimensionless AXIS_MAX_SPEED = Percent.of(10);
 }
