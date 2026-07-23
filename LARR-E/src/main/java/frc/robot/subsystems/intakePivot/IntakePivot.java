@@ -14,6 +14,7 @@ import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.CanID;
 import frc.robot.subsystems.intakePivot.IntakePivotConstants;
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
 
 public class IntakePivot extends SubsystemBase {
 
@@ -21,11 +22,21 @@ public class IntakePivot extends SubsystemBase {
 
     public IntakePivot() {
 
-        TalonFXConfiguration INTAKE_PIVOT_MOTOR_CONFIG = new TalonFXConfiguration();
-        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+        TalonFXConfiguration config = new TalonFXConfiguration();
+        config.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+        config.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
 
-        m_motor.getConfigurator().apply(INTAKE_PIVOT_MOTOR_CONFIG);
+        m_motor.getConfigurator().apply(config);
+
+        CurrentLimitsConfigs ampLimiter = new CurrentLimitsConfigs();
+
+        ampLimiter.StatorCurrentLimit = 80;
+        ampLimiter.StatorCurrentLimitEnable = true;
+
+        ampLimiter.SupplyCurrentLimit = 40;
+        ampLimiter.SupplyCurrentLimitEnable = true;
+
+        m_motor.getConfigurator().apply(ampLimiter);
     }
 
     public void setSpeed(Dimensionless m_speed) {
