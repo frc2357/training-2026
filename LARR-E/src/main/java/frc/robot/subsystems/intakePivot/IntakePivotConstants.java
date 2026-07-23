@@ -17,15 +17,5 @@ import frc.robot.constants.CanID;
 
 public class IntakePivotConstants {
 
-    public static final TalonFX INTAKE_PIVOT_MOTOR = new TalonFX(CanID.INTAKE_PIVOT_MOTOR);
-
-    private void configureMotor() {
-        TalonFXConfiguration INTAKE_PIVOT_MOTOR_CONFIG = new TalonFXConfiguration();
-        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
-
-        INTAKE_PIVOT_MOTOR.getConfigurator().apply(INTAKE_PIVOT_MOTOR_CONFIG);
-    }
-
-    public static final Dimensionless AXIS_MAX_SPEED = Value.of(30);
+    public static final Dimensionless AXIS_MAX_SPEED = Value.of(10);
 }

@@ -3,8 +3,11 @@ package frc.robot.subsystems.intakePivot;
 import static edu.wpi.first.units.Units.Value;
 import com.revrobotics.spark.SparkMax;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.InvertedValue;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.revrobotics.PersistMode;
 import com.revrobotics.ResetMode;
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import edu.wpi.first.units.measure.Dimensionless;
@@ -14,10 +17,15 @@ import frc.robot.subsystems.intakePivot.IntakePivotConstants;
 
 public class IntakePivot extends SubsystemBase {
 
-    private TalonFX m_motor;
+    public static final TalonFX m_motor = new TalonFX(CanID.INTAKE_PIVOT_MOTOR);
 
     public IntakePivot() {
-        m_motor = IntakePivotConstants.INTAKE_PIVOT_MOTOR;
+
+        TalonFXConfiguration INTAKE_PIVOT_MOTOR_CONFIG = new TalonFXConfiguration();
+        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+        INTAKE_PIVOT_MOTOR_CONFIG.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+
+        m_motor.getConfigurator().apply(INTAKE_PIVOT_MOTOR_CONFIG);
     }
 
     public void setSpeed(Dimensionless m_speed) {
