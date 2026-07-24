@@ -30,9 +30,6 @@ public class IntakePivot extends SubsystemBase {
 
         CurrentLimitsConfigs ampLimiter = new CurrentLimitsConfigs();
 
-        ampLimiter.StatorCurrentLimit = 80;
-        ampLimiter.StatorCurrentLimitEnable = true;
-
         ampLimiter.SupplyCurrentLimit = 40;
         ampLimiter.SupplyCurrentLimitEnable = true;
 
