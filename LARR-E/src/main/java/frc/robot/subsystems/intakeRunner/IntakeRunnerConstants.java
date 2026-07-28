@@ -17,5 +17,5 @@ public class IntakeRunnerConstants {
     public static final TalonFX LEFT_INTAKE_MOTOR = new TalonFX(CanID.LEFT_INTAKE_MOTOR);
     public static final TalonFX RIGHT_INTAKE_MOTOR = new TalonFX(CanID.RIGHT_INTAKE_MOTOR);
 
-    public static final Dimensionless AXIS_MAX_SPEED = Percent.of(80);
+    public static final Dimensionless AXIS_MAX_SPEED = Percent.of(60);
 }

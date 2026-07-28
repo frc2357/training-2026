@@ -17,7 +17,6 @@ public class IntakePivotAxis extends Command {
     @Override
     public void execute() {
         Robot.intakePivot.setAxisSpeed(m_axis.get());
-
     }
 
     @Override
