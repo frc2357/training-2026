@@ -29,6 +29,7 @@ public class IntakeRunner extends SubsystemBase {
         TalonFXConfiguration rightConfig = new TalonFXConfiguration();
         leftConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
         leftConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
+        rightConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
         rightConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
         m_leftMotor.getConfigurator().apply(leftConfig);
         m_rightMotor.getConfigurator().apply(rightConfig);
