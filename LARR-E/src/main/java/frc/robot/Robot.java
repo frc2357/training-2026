@@ -16,6 +16,7 @@ import frc.robot.subsystems.feeder.Feeder;
 import frc.robot.subsystems.floor.Floor;
 import frc.robot.subsystems.intakePivot.IntakePivot;
 import frc.robot.subsystems.intakeRunner.IntakeRunner;
+import frc.robot.subsystems.kicker.Kicker;
 import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.tunnel.Tunnel;
 
@@ -36,6 +37,7 @@ public class Robot extends TimedRobot {
   public static Shooter shooter;
   public static CommandSwerveDrivetrain swerve;
   public static IntakeRunner intakeRunner;
+  public static Kicker kicker;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -51,6 +53,7 @@ public class Robot extends TimedRobot {
     intakePivot = new IntakePivot();
     shooter = new Shooter();
     intakeRunner = new IntakeRunner();
+    kicker = new Kicker();
 
     driverControls = new DriverControls(
         new CommandXboxController(ControlConstants.DRIVE_CONTROLLER_PORT));
