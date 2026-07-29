@@ -13,7 +13,7 @@ public class HoodConstants {
     public static final SparkBaseConfig MOTOR_CONFIG = new SparkMaxConfig()
             .inverted(false)
             .idleMode(IdleMode.kBrake)
-            .smartCurrentLimit(20, 30);
+            .smartCurrentLimit(10, 10);
 
     public static final Dimensionless AXIS_MAX_SPEED = Percent.of(5);
 
