@@ -5,6 +5,7 @@ import static edu.wpi.first.units.Units.Percent;
 import edu.wpi.first.units.measure.Dimensionless;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.feeder.FeederSetSpeed;
+import frc.robot.commands.hood.HoodSetSpeed;
 import frc.robot.commands.intakePivot.IntakePivotAxis;
 import frc.robot.commands.intakeRunner.IntakeRunnerSetSpeed;
 import frc.robot.commands.kicker.KickerSetSpeed;
@@ -31,6 +32,9 @@ public class DriverControls {
         m_controller.x().onTrue(new ShooterStop());
         m_controller.y().whileTrue(new IntakeRunnerSetSpeed(Percent.of(50)));
         m_controller.b().whileTrue(new KickerSetSpeed(Percent.of(100)));
+
+        m_controller.leftBumper().whileTrue(new HoodSetSpeed(Percent.of(-5)));
+        m_controller.rightBumper().whileTrue(new HoodSetSpeed(Percent.of(5)));
     }
 
     public Dimensionless getLeftX() {
