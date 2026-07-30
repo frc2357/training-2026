@@ -3,6 +3,9 @@ plugins {
     id "org.wpilib.GradleRIO" version "2027.0.0-alpha-6"
     id "com.gradleup.shadow" version "9.3.0"
 }
+wpi.maven.useLocal = false
+wpi.maven.useWpilibMavenLocalDevelopment = true
+wpi.versions.wpilibVersion = '2027.424242.+'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_25

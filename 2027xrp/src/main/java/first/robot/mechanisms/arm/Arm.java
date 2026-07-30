@@ -10,7 +10,7 @@ import org.wpilib.math.util.MathUtil;
 import org.wpilib.units.measure.Angle;
 import org.wpilib.xrp.XRPServo;
 
-public class Arm extends Mechanism {
+public class Arm implements Mechanism {
     private final XRPServo armServo;
 
     /** Creates a new Arm. */

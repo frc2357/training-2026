@@ -14,7 +14,7 @@ import org.wpilib.util.sendable.SendableRegistry;
 import org.wpilib.xrp.XRPGyro;
 import org.wpilib.xrp.XRPMotor;
 
-public class Drive extends Mechanism {
+public class Drive implements Mechanism {
     // The XRP has the left and right motors set to
     // channels 0 and 1 respectively
     private final XRPMotor m_leftMotor = new XRPMotor(0);
@@ -52,7 +52,7 @@ public class Drive extends Mechanism {
     }
 
     public Command arcadeDrive(Supplier<Dimensionless> velocity, Supplier<Dimensionless> rotate) {
-        return super.runRepeatedly(
+        return this.runRepeatedly(
                 () -> {
                     arcadeDrive(
                             velocity.get().in(Value), rotate.get().in(Value));
