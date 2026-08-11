@@ -6,8 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.drive.DefaultDrive;
+import frc.robot.commands.intakePivot.IntakeDeploy;
 import frc.robot.controls.ControlConstants;
 import frc.robot.controls.DriverControls;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
