@@ -52,7 +52,7 @@ public class IntakePivot extends SubsystemBase {
     }
 
     public boolean StatorCurrentStall() {
-        return m_motor.getStatorCurrent().getValue().gt(Amps.of(40));
+        return m_motor.getStatorCurrent().getValue().gt(Amps.of(IntakePivotConstants.STALL_AMPS.in(Value)));
     }
 
     @Override

@@ -19,4 +19,6 @@ import frc.robot.constants.CanID;
 public class IntakePivotConstants {
 
     public static final Dimensionless AXIS_MAX_SPEED = Percent.of(10);
+    public static final Dimensionless DEPLOY_SPEED = Value.of(40);
+    public static final Dimensionless STALL_AMPS = Value.of(40);
 }
