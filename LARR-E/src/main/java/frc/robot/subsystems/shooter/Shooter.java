@@ -26,9 +26,9 @@ public class Shooter extends SubsystemBase {
         TalonFXConfiguration leftConfig = new TalonFXConfiguration();
         TalonFXConfiguration rightConfig = new TalonFXConfiguration();
         leftConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
-        leftConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+        leftConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
         rightConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
-        rightConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
+        rightConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
         m_leftMotor.getConfigurator().apply(leftConfig);
         m_rightMotor.getConfigurator().apply(rightConfig);
     }
