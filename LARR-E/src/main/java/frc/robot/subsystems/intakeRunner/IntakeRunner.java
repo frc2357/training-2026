@@ -44,6 +44,6 @@ public class IntakeRunner extends SubsystemBase {
     }
 
     public void stop() {
-        m_leftMotor.set(0);
+        m_leftMotor.stopMotor();
     }
 }
