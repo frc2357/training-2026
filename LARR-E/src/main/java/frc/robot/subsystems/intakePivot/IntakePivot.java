@@ -1,5 +1,7 @@
 package frc.robot.subsystems.intakePivot;
 
+import static edu.wpi.first.units.Units.Amp;
+import static edu.wpi.first.units.Units.Amps;
 import static edu.wpi.first.units.Units.Value;
 import com.revrobotics.spark.SparkMax;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -11,6 +13,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import edu.wpi.first.units.measure.Dimensionless;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.CanID;
 import frc.robot.subsystems.intakePivot.IntakePivotConstants;
@@ -46,5 +49,15 @@ public class IntakePivot extends SubsystemBase {
 
     public void stop() {
         m_motor.set(0.0);
+    }
+
+    public boolean StatorCurrentStall() {
+        return m_motor.getStatorCurrent().getValue().gt(Amps.of(IntakePivotConstants.STALL_AMPS.in(Value)));
+    }
+
+    @Override
+    public void periodic() {
+        SmartDashboard.putBoolean("Intake Pivot Stall", StatorCurrentStall());
+        SmartDashboard.putNumber("Intake Pivot Amps", m_motor.getStatorCurrent().getValue().in(Amps));
     }
 }
