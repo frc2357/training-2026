@@ -34,8 +34,7 @@ public class DriverControls {
         m_controller.y().whileTrue(new IntakeRunnerSetSpeed(Percent.of(50)));
         m_controller.b().onTrue(new IntakeDeploy());
 
-        m_controller.leftBumper().whileTrue(new HoodSetSpeed(Percent.of(-5)));
-        m_controller.rightBumper().whileTrue(new HoodSetSpeed(Percent.of(5)));
+        m_controller.rightBumper().whileTrue(new IntakeRunnerSetSpeed(Percent.of(80)));
     }
 
     public Dimensionless getLeftX() {
