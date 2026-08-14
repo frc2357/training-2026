@@ -22,6 +22,7 @@ import frc.robot.subsystems.intakeRunner.IntakeRunner;
 import frc.robot.subsystems.kicker.Kicker;
 import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.tunnel.Tunnel;
+import frc.robot.commands.intakePivot.IntakeDeploy;
 
 /**
  * The methods in this class are called automatically corresponding to each
@@ -112,10 +113,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
+    CommandScheduler.getInstance().schedule(new IntakeDeploy());
   }
 
   /** This function is called periodically during operator control. */

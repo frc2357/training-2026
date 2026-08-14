@@ -26,13 +26,13 @@ public class DriverControls {
 
     public void mapControls() {
         m_controller.rightTrigger()
-                .whileTrue(new IntakePivotAxis(() -> Percent.of(m_controller.getRightTriggerAxis())));
-        m_controller.leftTrigger().whileTrue(new IntakePivotAxis(() -> Percent.of(-m_controller.getLeftTriggerAxis())));
+                .whileTrue(new IntakePivotAxis(() -> Value.of(m_controller.getRightTriggerAxis())));
+        m_controller.leftTrigger().whileTrue(new IntakePivotAxis(() -> Value.of(-m_controller.getLeftTriggerAxis())));
 
         m_controller.a().onTrue(new ShooterSetSpeed(Percent.of(50)));
         m_controller.x().onTrue(new ShooterStop());
         m_controller.y().whileTrue(new IntakeRunnerSetSpeed(Percent.of(50)));
-        m_controller.b().whileTrue(new IntakeDeploy());
+        m_controller.b().onTrue(new IntakeDeploy());
 
         m_controller.leftBumper().whileTrue(new HoodSetSpeed(Percent.of(-5)));
         m_controller.rightBumper().whileTrue(new HoodSetSpeed(Percent.of(5)));
