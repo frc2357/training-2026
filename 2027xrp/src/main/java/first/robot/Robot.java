@@ -5,7 +5,7 @@
 package first.robot;
 
 import org.wpilib.command3.Scheduler;
-import org.wpilib.command3.button.CommandNiDsXboxController;
+import org.wpilib.command3.button.CommandXboxController;
 import org.wpilib.framework.OpModeRobot;
 import org.wpilib.xrp.XRPOnBoardIO;
 
@@ -25,7 +25,7 @@ import first.robot.mechanisms.drivetrain.Drive;
  */
 public class Robot extends OpModeRobot {
 
-  public static final CommandNiDsXboxController driverController = new CommandNiDsXboxController(
+  public static final CommandXboxController driverController = new CommandXboxController(
       ControllerConstants.DRIVER_CONTROLLER_PORT);
 
   public static final Drive drive = new Drive();

@@ -19,8 +19,8 @@ public class MatchTeleop extends PeriodicOpMode {
   public MatchTeleop(Robot robot) {
     System.out.println("opmode constructed");
     ConfigureButtonBindings();
-    Robot.drive.setDefaultCommand(Robot.drive.arcadeDrive(() -> Value.of(Robot.driverController.getLeftY()),
-        () -> Value.of(Robot.driverController.getRightX())));
+    Robot.drive.setDefaultCommand(Robot.drive.arcadeDrive(() -> Value.of(-Robot.driverController.getLeftY()),
+        () -> Value.of(-Robot.driverController.getRightX())));
   }
 
   public void ConfigureButtonBindings() {
