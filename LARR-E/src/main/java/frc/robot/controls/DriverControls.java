@@ -8,6 +8,7 @@ import frc.robot.commands.feeder.FeederSetSpeed;
 import frc.robot.commands.hood.HoodSetSpeed;
 import frc.robot.commands.intakePivot.IntakeDeploy;
 import frc.robot.commands.intakePivot.IntakePivotAxis;
+import frc.robot.commands.intakeRunner.IntakeRunnerAxis;
 import frc.robot.commands.intakeRunner.IntakeRunnerSetSpeed;
 import frc.robot.commands.kicker.KickerSetSpeed;
 import frc.robot.commands.shooter.ShooterSetSpeed;
@@ -20,22 +21,19 @@ public class DriverControls {
 
     public DriverControls(CommandXboxController controller) {
         m_controller = controller;
-
         mapControls();
     }
 
     public void mapControls() {
-        m_controller.rightTrigger()
-                .whileTrue(new IntakePivotAxis(() -> Value.of(m_controller.getRightTriggerAxis())));
+        // m_controller.rightTrigger().whileTrue(new IntakePivotAxis(() ->
+        // Value.of(m_controller.getRightTriggerAxis())));
         m_controller.leftTrigger().whileTrue(new IntakePivotAxis(() -> Value.of(-m_controller.getLeftTriggerAxis())));
 
         m_controller.a().onTrue(new ShooterSetSpeed(Percent.of(50)));
         m_controller.x().onTrue(new ShooterStop());
-        m_controller.y().whileTrue(new IntakeRunnerSetSpeed(Percent.of(50)));
         m_controller.b().onTrue(new IntakeDeploy());
 
-        m_controller.leftBumper().whileTrue(new HoodSetSpeed(Percent.of(-5)));
-        m_controller.rightBumper().whileTrue(new HoodSetSpeed(Percent.of(5)));
+        m_controller.rightTrigger().whileTrue(new IntakeRunnerAxis(() -> Value.of(m_controller.getRightTriggerAxis())));
     }
 
     public Dimensionless getLeftX() {

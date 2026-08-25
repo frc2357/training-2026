@@ -15,7 +15,7 @@ public class IntakeDeploy extends Command {
 
     @Override
     public void initialize() {
-        Robot.intakePivot.setSpeed(Percent.of(IntakePivotConstants.DEPLOY_SPEED.in(Value)));
+        Robot.intakePivot.setSpeed(IntakePivotConstants.DEPLOY_SPEED);
     }
 
     @Override
