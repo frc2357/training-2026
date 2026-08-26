@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.drive.DefaultDrive;
 import frc.robot.commands.intakePivot.IntakeDeploy;
+import frc.robot.controls.CoDriverControls;
 import frc.robot.controls.ControlConstants;
 import frc.robot.controls.DriverControls;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
@@ -34,6 +35,7 @@ import frc.robot.commands.intakePivot.IntakeDeploy;
 public class Robot extends TimedRobot {
 
   public static DriverControls driverControls;
+  public static CoDriverControls coDriverControls;
   public static Floor floor;
   public static Tunnel tunnel;
   public static Feeder feeder;
@@ -61,6 +63,7 @@ public class Robot extends TimedRobot {
     kicker = new Kicker();
     hood = new Hood();
 
+    coDriverControls = new CoDriverControls(new CommandXboxController(ControlConstants.CO_DRIVER_CONTROLLER_PORT));
     driverControls = new DriverControls(
         new CommandXboxController(ControlConstants.DRIVE_CONTROLLER_PORT));
 
