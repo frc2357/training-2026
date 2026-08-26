@@ -11,6 +11,7 @@ import frc.robot.commands.intakePivot.IntakePivotAxis;
 import frc.robot.commands.intakeRunner.IntakeRunnerAxis;
 import frc.robot.commands.intakeRunner.IntakeRunnerSetSpeed;
 import frc.robot.commands.kicker.KickerSetSpeed;
+import frc.robot.commands.scoring.Feeding;
 import frc.robot.commands.shooter.ShooterSetSpeed;
 import frc.robot.commands.shooter.ShooterStop;
 import frc.robot.commands.tunnel.TunnelSetSpeed;
@@ -33,6 +34,7 @@ public class DriverControls {
         m_controller.x().onTrue(new ShooterStop());
         m_controller.b().onTrue(new IntakeDeploy());
 
+        m_controller.rightBumper().whileTrue(new Feeding());
         m_controller.rightTrigger().whileTrue(new IntakeRunnerAxis(() -> Value.of(m_controller.getRightTriggerAxis())));
     }
 
