@@ -7,5 +7,5 @@ import frc.robot.constants.CanID;
 
 public class ShooterConstants {
 
-        public static final Dimensionless AXIS_MAX_SPEED = Percent.of(80);
+        public static final Dimensionless AXIS_MAX_SPEED = Percent.of(60);
 }

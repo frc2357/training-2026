@@ -4,12 +4,15 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Percent;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.drive.DefaultDrive;
 import frc.robot.commands.intakePivot.IntakeDeploy;
+import frc.robot.commands.shooter.ShooterSetSpeed;
 import frc.robot.controls.ControlConstants;
 import frc.robot.controls.DriverControls;
 import frc.robot.subsystems.drivetrain.CommandSwerveDrivetrain;
@@ -113,6 +116,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    new ShooterSetSpeed(Percent.of(75));
+
     CommandScheduler.getInstance().schedule(new IntakeDeploy());
   }
 
