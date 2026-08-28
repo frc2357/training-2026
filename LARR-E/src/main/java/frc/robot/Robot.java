@@ -63,9 +63,10 @@ public class Robot extends TimedRobot {
     kicker = new Kicker();
     hood = new Hood();
 
-    coDriverControls = new CoDriverControls(new CommandXboxController(ControlConstants.CO_DRIVER_CONTROLLER_PORT));
+    coDriverControls = new CoDriverControls(new CommandXboxController(ControlConstants.CO_DRIVER_CONTROLLER_PORT),
+        ControlConstants.CODRIVER_CONTROLLER_DEADBAND);
     driverControls = new DriverControls(
-        new CommandXboxController(ControlConstants.DRIVE_CONTROLLER_PORT));
+        new CommandXboxController(ControlConstants.DRIVE_CONTROLLER_PORT), ControlConstants.DRIVER_CONTROLLER_DEADBAND);
 
     swerve.setDefaultCommand(new DefaultDrive());
   }
