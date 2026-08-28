@@ -3,6 +3,7 @@ package frc.robot.controls;
 import static edu.wpi.first.units.Units.Value;
 import static edu.wpi.first.units.Units.Percent;
 import edu.wpi.first.units.measure.Dimensionless;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.feeder.FeederSetSpeed;
 import frc.robot.commands.hood.HoodSetSpeed;
@@ -15,13 +16,17 @@ import frc.robot.commands.scoring.Feeding;
 import frc.robot.commands.shooter.ShooterSetSpeed;
 import frc.robot.commands.shooter.ShooterStop;
 import frc.robot.commands.tunnel.TunnelSetSpeed;
+import frc.robot.controls.util.RumbleInterface;
 
-public class DriverControls {
+public class DriverControls implements RumbleInterface {
 
     private CommandXboxController m_controller;
 
-    public DriverControls(CommandXboxController controller) {
+    private Dimensionless m_deadband;
+
+    public DriverControls(CommandXboxController controller, Dimensionless deadband) {
         m_controller = controller;
+        m_deadband = deadband;
         mapControls();
     }
 
@@ -48,5 +53,22 @@ public class DriverControls {
 
     public Dimensionless getRotation() {
         return Value.of(-m_controller.getRightX());
+    }
+
+    public double deadband(double value, double deadband) {
+        if (Math.abs(value) > deadband) {
+            if (value > 0.0) {
+                return (value - deadband) / (1.0 - deadband);
+            } else {
+                return (value + deadband) / (1.0 - deadband);
+            }
+        } else {
+            return 0.0;
+        }
+    }
+
+    @Override
+    public void setRumble(Dimensionless intensity) {
+        m_controller.setRumble(RumbleType.kBothRumble, intensity.in(Value));
     }
 }
