@@ -14,6 +14,7 @@
     "**/.factorypath": true,
     "**/*~": true
   },
+  "wpilib.skipSelectSimulateExtension": true,
   "java.test.config": [
     {
       "name": "WPIlibUnitTests",
@@ -57,5 +58,6 @@
     "org.wpilib.math.**.proto.*",
     "org.wpilib.math.**.struct.*",
   ],
+  "java.debug.settings.enableRunDebugCodeLens": false,
   "java.dependency.enableDependencyCheckup": false
 }
