@@ -10,11 +10,11 @@ import org.wpilib.math.util.MathUtil;
 import org.wpilib.units.measure.Angle;
 import org.wpilib.xrp.XRPServo;
 
-public class Arm implements Mechanism {
+public class Pivot implements Mechanism {
     private final XRPServo armServo;
 
     /** Creates a new Arm. */
-    public Arm() {
+    public Pivot() {
         // Device number 4 maps to the physical Servo 1 port on the XRP
         armServo = new XRPServo(ArmConstants.SERVO_PORT);
     }
@@ -24,16 +24,22 @@ public class Arm implements Mechanism {
      *
      * @param angleDeg Desired arm angle in degrees
      */
-    private void setAngle(Angle angleDeg) {
+    private void setServoAngle(Angle angleDeg) {
         armServo.setAngle(angleDeg.in(Degrees));
     }
 
-    public Command setAngle(Supplier<Angle> angle) {
-        return this.run((coro) -> {
-            setAngle(angle.get());
 
-            coro.waitUntil(() -> MathUtil.isNear(angle.get().in(Degrees), armServo.getAngle(),
-                    ArmConstants.ARM_POSITION_TOLERANCE.in(Degrees)));
+    public Command setAngle(Angle angle) {
+        return this.run((coro) -> {
+            setServoAngle(angle);
+
+            coro.waitUntil(() -> atAngle(angle));
         }).named("Set Arm Angle");
+    }
+
+
+    public boolean atAngle(Angle angle) {
+        return MathUtil.isNear(angle.in(Degrees), armServo.getAngle(),
+                    ArmConstants.ARM_POSITION_TOLERANCE.in(Degrees));
     }
 }

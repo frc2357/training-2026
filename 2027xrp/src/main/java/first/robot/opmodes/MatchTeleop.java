@@ -4,6 +4,7 @@
 
 package first.robot.opmodes;
 
+import static org.wpilib.units.Units.Degrees;
 import static org.wpilib.units.Units.Value;
 
 import org.wpilib.command3.Command;
@@ -29,6 +30,8 @@ public class MatchTeleop extends PeriodicOpMode {
         .onTrue(Command.noRequirements(coro -> System.out.println("User button pressed")).named("u1"))
         .onFalse(Command.noRequirements(coro -> System.out.println("USER Button Released")).named("u2"));
 
+    Robot.driverController.a().whileTrue(Robot.arm.setAngle(Degrees.of(90)));
+    Robot.driverController.y().whileTrue(Robot.arm.setAngle(Degrees.of(130)));
   }
 
   @Override
