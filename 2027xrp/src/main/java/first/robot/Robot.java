@@ -25,12 +25,12 @@ import first.robot.mechanisms.drivetrain.Drive;
  */
 public class Robot extends OpModeRobot {
 
-  public static final CommandXboxController driverController = new CommandXboxController(
+  public final CommandXboxController driverController = new CommandXboxController(
       ControllerConstants.DRIVER_CONTROLLER_PORT);
 
-  public static final Drive drive = new Drive();
-  public static final Pivot arm = new Pivot();
-  public static final XRPOnBoardIO xrpIO = new XRPOnBoardIO();
+  public final Drive drive = new Drive();
+  public final Pivot arm = new Pivot();
+  public final XRPOnBoardIO xrpIO = new XRPOnBoardIO();
 
   /**
    * This function is run when the robot is first started up and should be used

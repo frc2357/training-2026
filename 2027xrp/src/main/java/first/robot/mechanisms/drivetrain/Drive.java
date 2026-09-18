@@ -10,6 +10,7 @@ import org.wpilib.command3.Mechanism;
 import org.wpilib.drive.DifferentialDrive;
 import org.wpilib.hardware.rotation.Encoder;
 import org.wpilib.units.measure.Dimensionless;
+import org.wpilib.units.measure.Time;
 import org.wpilib.xrp.XRPGyro;
 import org.wpilib.xrp.XRPMotor;
 
@@ -52,11 +53,19 @@ public class Drive implements Mechanism {
                 () -> {
                     arcadeDrive(
                             velocity.get().in(Value), rotate.get().in(Value));
-                          //  System.out.println("vel" + velocity.get().in(Value));
                 })
                 .withPriority(Command.LOWEST_PRIORITY)
                 .named("Split-Stick Arcade Drive");
+    }
 
+    public Command autoDrive(Time time, Dimensionless velocity, Dimensionless rotate) {
+        return this.run((coro) -> {
+            coro.fork(this.runRepeatedly(() -> arcadeDrive(velocity.in(Value), rotate.in(Value))).named("Run Drive"));
+
+            coro.wait(time);
+
+            arcadeDrive(0, 0);
+        }).named("Auto Drive");
     }
 
     public void resetEncoders() {

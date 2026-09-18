@@ -15,23 +15,25 @@ import first.robot.Robot;
 
 @Teleop
 public class MatchTeleop extends PeriodicOpMode {
+  private Robot m_robot;
 
   /** The Robot instance is passed into the opmode via the constructor. */
   public MatchTeleop(Robot robot) {
+    m_robot = robot;
     System.out.println("opmode constructed");
     ConfigureButtonBindings();
-    Robot.drive.setDefaultCommand(Robot.drive.arcadeDrive(() -> Value.of(-Robot.driverController.getLeftY()),
-        () -> Value.of(-Robot.driverController.getRightX())));
+    m_robot.drive.setDefaultCommand(m_robot.drive.arcadeDrive(() -> Value.of(-m_robot.driverController.getLeftY()),
+        () -> Value.of(-m_robot.driverController.getRightX())));
   }
 
   public void ConfigureButtonBindings() {
-    Trigger userButton = new Trigger(Robot.xrpIO::getUserButtonPressed);
+    Trigger userButton = new Trigger(m_robot.xrpIO::getUserButtonPressed);
     userButton
         .onTrue(Command.noRequirements(coro -> System.out.println("User button pressed")).named("u1"))
         .onFalse(Command.noRequirements(coro -> System.out.println("USER Button Released")).named("u2"));
 
-    Robot.driverController.a().whileTrue(Robot.arm.setAngle(Degrees.of(90)));
-    Robot.driverController.y().whileTrue(Robot.arm.setAngle(Degrees.of(130)));
+    m_robot.driverController.a().whileTrue(m_robot.arm.setAngle(Degrees.of(90)));
+    m_robot.driverController.y().whileTrue(m_robot.arm.setAngle(Degrees.of(130)));
   }
 
   @Override

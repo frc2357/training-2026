@@ -13,7 +13,7 @@ import org.wpilib.xrp.XRPServo;
 public class Pivot implements Mechanism {
     private final XRPServo armServo;
 
-    /** Creates a new Arm. */
+    /** Creates a new Pivot. */
     public Pivot() {
         // Device number 4 maps to the physical Servo 1 port on the XRP
         armServo = new XRPServo(ArmConstants.SERVO_PORT);
