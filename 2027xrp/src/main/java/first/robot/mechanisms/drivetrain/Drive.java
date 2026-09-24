@@ -60,7 +60,9 @@ public class Drive implements Mechanism {
 
     public Command autoDrive(Time time, Dimensionless velocity, Dimensionless rotate) {
         return this.run((coro) -> {
-            coro.fork(this.runRepeatedly(() -> arcadeDrive(velocity.in(Value), rotate.in(Value))).named("Run Drive"));
+            coro.fork(
+                this.runRepeatedly(() -> arcadeDrive(velocity.in(Value), rotate.in(Value)))
+                .named("Run Drive"));
 
             coro.wait(time);
 

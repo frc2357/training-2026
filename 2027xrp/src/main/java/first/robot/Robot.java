@@ -9,7 +9,7 @@ import org.wpilib.command3.button.CommandXboxController;
 import org.wpilib.framework.OpModeRobot;
 import org.wpilib.xrp.XRPOnBoardIO;
 
-import first.robot.mechanisms.arm.Pivot;
+import first.robot.mechanisms.arm.Arm;
 import first.robot.mechanisms.drivetrain.Drive;
 
 /**
@@ -29,7 +29,7 @@ public class Robot extends OpModeRobot {
       ControllerConstants.DRIVER_CONTROLLER_PORT);
 
   public final Drive drive = new Drive();
-  public final Pivot arm = new Pivot();
+  public final Arm arm = new Arm();
   public final XRPOnBoardIO xrpIO = new XRPOnBoardIO();
 
   /**

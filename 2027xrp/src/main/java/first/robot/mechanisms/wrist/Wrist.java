@@ -1,8 +1,6 @@
-package first.robot.mechanisms.arm;
+package first.robot.mechanisms.wrist;
 
 import static org.wpilib.units.Units.Degrees;
-
-import java.util.function.Supplier;
 
 import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
@@ -10,13 +8,13 @@ import org.wpilib.math.util.MathUtil;
 import org.wpilib.units.measure.Angle;
 import org.wpilib.xrp.XRPServo;
 
-public class Pivot implements Mechanism {
+public class Wrist implements Mechanism {
     private final XRPServo armServo;
 
     /** Creates a new Pivot. */
-    public Pivot() {
+    public Wrist() {
         // Device number 4 maps to the physical Servo 1 port on the XRP
-        armServo = new XRPServo(ArmConstants.SERVO_PORT);
+        armServo = new XRPServo(WristConstants.SERVO_PORT);
     }
 
     /**
@@ -34,12 +32,20 @@ public class Pivot implements Mechanism {
             setServoAngle(angle);
 
             coro.waitUntil(() -> atAngle(angle));
-        }).named("Set Arm Angle");
+        }).named("Set Arm Angle To " + angle.in(Degrees));
+    }
+
+    public Command goToScorePosition() {
+        return setAngle(WristConstants.WRIST_SCORE_POSITION);
+    }
+
+    public Command goToHomePosition() {
+        return setAngle(WristConstants.WRIST_HOME_POSITION);
     }
 
 
     public boolean atAngle(Angle angle) {
         return MathUtil.isNear(angle.in(Degrees), armServo.getAngle(),
-                    ArmConstants.ARM_POSITION_TOLERANCE.in(Degrees));
+                    WristConstants.WRIST_POSITION_TOLERANCE.in(Degrees));
     }
 }

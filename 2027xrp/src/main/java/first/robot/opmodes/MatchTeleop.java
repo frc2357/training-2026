@@ -32,8 +32,10 @@ public class MatchTeleop extends PeriodicOpMode {
         .onTrue(Command.noRequirements(coro -> System.out.println("User button pressed")).named("u1"))
         .onFalse(Command.noRequirements(coro -> System.out.println("USER Button Released")).named("u2"));
 
-    m_robot.driverController.a().whileTrue(m_robot.arm.setAngle(Degrees.of(90)));
-    m_robot.driverController.y().whileTrue(m_robot.arm.setAngle(Degrees.of(130)));
+    m_robot.driverController.a().whileTrue(m_robot.arm.setPivotAngle(Degrees.of(90)));
+    m_robot.driverController.y().whileTrue(m_robot.arm.setPivotAngle(Degrees.of(130)));
+
+    m_robot.driverController.rightTrigger().whileTrue(m_robot.arm.score());
   }
 
   @Override

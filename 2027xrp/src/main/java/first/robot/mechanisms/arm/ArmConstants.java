@@ -1,10 +1,9 @@
 package first.robot.mechanisms.arm;
 
-import static org.wpilib.units.Units.Degrees;
+import static org.wpilib.units.Units.Seconds;
 
-import org.wpilib.units.measure.Angle;
+import org.wpilib.units.measure.Time;
 
-public final class ArmConstants {
-    public static final int SERVO_PORT = 4;
-    public static final Angle ARM_POSITION_TOLERANCE = Degrees.of(1);
+public class ArmConstants {
+   public static final Time TIME_TO_SCORE  = Seconds.of(1);
 }
