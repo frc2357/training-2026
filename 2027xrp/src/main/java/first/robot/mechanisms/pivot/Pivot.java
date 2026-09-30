@@ -2,6 +2,8 @@ package first.robot.mechanisms.pivot;
 
 import static org.wpilib.units.Units.Degrees;
 
+import java.util.function.Supplier;
+
 import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 import org.wpilib.math.util.MathUtil;
@@ -32,6 +34,16 @@ public class Pivot implements Mechanism {
 
             coro.waitUntil(() -> atAngle(angle));
         }).named("Set Arm Angle " + angle.in(Degrees));
+    }
+
+    public Command setAngle(Supplier<Angle> angleGetter
+    ) {
+        return this.run((coro) -> {
+            Angle angle = angleGetter.get();
+            setServoAngle(angle);
+
+            coro.waitUntil(() -> atAngle(angle));
+        }).named("Set Arm Angle Variable Degrees");
     }
 
     public Command goToScorePosition() {

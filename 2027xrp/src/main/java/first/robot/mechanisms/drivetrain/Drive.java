@@ -9,6 +9,7 @@ import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 import org.wpilib.drive.DifferentialDrive;
 import org.wpilib.hardware.rotation.Encoder;
+import org.wpilib.telemetry.Telemetry;
 import org.wpilib.units.measure.Dimensionless;
 import org.wpilib.units.measure.Time;
 import org.wpilib.xrp.XRPGyro;
@@ -61,8 +62,8 @@ public class Drive implements Mechanism {
     public Command autoDrive(Time time, Dimensionless velocity, Dimensionless rotate) {
         return this.run((coro) -> {
             coro.fork(
-                this.runRepeatedly(() -> arcadeDrive(velocity.in(Value), rotate.in(Value)))
-                .named("Run Drive"));
+                    this.runRepeatedly(() -> arcadeDrive(velocity.in(Value), rotate.in(Value)))
+                            .named("Run Drive"));
 
             coro.wait(time);
 
@@ -125,5 +126,12 @@ public class Drive implements Mechanism {
     /** Reset the gyro. */
     public void resetGyro() {
         m_gyro.reset();
+    }
+
+    public void logSpeeds() {
+        Telemetry.getTable("Drive")
+                .log("right encoder distance inches", m_rightEncoder.getDistance());
+        Telemetry.getTable("Drive")
+                .log("left encoder distance inches", m_leftEncoder.getDistance());
     }
 }

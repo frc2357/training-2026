@@ -1,5 +1,7 @@
 package first.robot.mechanisms.arm;
 
+import java.util.function.Supplier;
+
 import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 import org.wpilib.units.measure.Angle;
@@ -16,10 +18,14 @@ public class Arm implements Mechanism {
         return m_pivot.setAngle(angle);
     }
 
+    public Command setPivotAngle(Supplier<Angle> angle) {
+        return m_pivot.setAngle(angle);
+    }
+
     public Command score() {
         return this.run((coro) -> {
             coro.awaitAll(m_wrist.goToScorePosition(), m_pivot.goToScorePosition());
-
+            
             coro.wait(ArmConstants.TIME_TO_SCORE);
 
             coro.awaitAll(m_wrist.goToHomePosition(), m_pivot.goToHomePosition());

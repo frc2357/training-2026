@@ -11,11 +11,16 @@ import org.wpilib.command3.Command;
 import org.wpilib.command3.Trigger;
 import org.wpilib.opmode.PeriodicOpMode;
 import org.wpilib.opmode.Teleop;
+import org.wpilib.tunable.TunableDouble;
+import org.wpilib.tunable.Tunables;
+
 import first.robot.Robot;
 
 @Teleop
 public class MatchTeleop extends PeriodicOpMode {
   private Robot m_robot;
+
+  private final TunableDouble m_tunablePivotAngle = Tunables.addDouble("pivotAngle", 100);
 
   /** The Robot instance is passed into the opmode via the constructor. */
   public MatchTeleop(Robot robot) {
@@ -24,6 +29,7 @@ public class MatchTeleop extends PeriodicOpMode {
     ConfigureButtonBindings();
     m_robot.drive.setDefaultCommand(m_robot.drive.arcadeDrive(() -> Value.of(-m_robot.driverController.getLeftY()),
         () -> Value.of(-m_robot.driverController.getRightX())));
+
   }
 
   public void ConfigureButtonBindings() {
@@ -36,6 +42,9 @@ public class MatchTeleop extends PeriodicOpMode {
     m_robot.driverController.y().whileTrue(m_robot.arm.setPivotAngle(Degrees.of(130)));
 
     m_robot.driverController.rightTrigger().whileTrue(m_robot.arm.score());
+
+    m_robot.driverController.x().whileTrue(m_robot.arm.setPivotAngle(() -> Degrees.of(m_tunablePivotAngle.get())));
+
   }
 
   @Override
@@ -50,7 +59,6 @@ public class MatchTeleop extends PeriodicOpMode {
 
   @Override
   public void periodic() {
-    /* Called periodically (set time interval) while the robot is enabled. */
   }
 
   @Override
