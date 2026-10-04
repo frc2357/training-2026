@@ -74,6 +74,7 @@ public class Robot extends OpModeRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     Scheduler.getDefault().run();
+    drive.logSpeeds();
   }
 
 }
