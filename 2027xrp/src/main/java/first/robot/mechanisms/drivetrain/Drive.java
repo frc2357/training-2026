@@ -71,6 +71,19 @@ public class Drive implements Mechanism {
         }).named("Auto Drive");
     }
 
+    /**
+     * This is an example of a coroutine command that can block robot code
+     * and cause loop overruns by doing lots of looping
+     * @return
+     */
+    public Command mathIntensive() {
+        return this.run((coro) -> {
+            for(long i = 0; i < Long.MAX_VALUE; i++) {
+                // Looping long time doing fancy math
+            }
+        }).named("Math Intensive");
+    }
+
     public void resetEncoders() {
         m_leftEncoder.reset();
         m_rightEncoder.reset();
