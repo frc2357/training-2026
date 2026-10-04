@@ -45,7 +45,7 @@ public class Drive implements Mechanism {
         resetEncoders();
     }
 
-    private void arcadeDrive(double velocity, double rotate) {
+    public void arcadeDrive(double velocity, double rotate) {
         m_diffDrive.arcadeDrive(velocity, rotate);
     }
 
