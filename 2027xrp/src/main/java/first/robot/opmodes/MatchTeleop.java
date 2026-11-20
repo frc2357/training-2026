@@ -8,11 +8,13 @@ import static org.wpilib.units.Units.Degrees;
 import static org.wpilib.units.Units.Value;
 
 import org.wpilib.command3.Command;
+import org.wpilib.command3.Mechanism;
 import org.wpilib.command3.Trigger;
 import org.wpilib.opmode.PeriodicOpMode;
 import org.wpilib.opmode.Teleop;
 import org.wpilib.tunable.TunableDouble;
 import org.wpilib.tunable.Tunables;
+import first.robot.mechanisms.drivetrain.Drive;
 
 import first.robot.Robot;
 
@@ -21,6 +23,8 @@ public class MatchTeleop extends PeriodicOpMode {
   private Robot m_robot;
 
   private final TunableDouble m_tunablePivotAngle = Tunables.addDouble("pivotAngle", 100);
+
+  private final Drive drive = new Drive();
 
   /** The Robot instance is passed into the opmode via the constructor. */
   public MatchTeleop(Robot robot) {

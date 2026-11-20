@@ -11,6 +11,7 @@ import org.wpilib.xrp.XRPOnBoardIO;
 
 import first.robot.mechanisms.arm.Arm;
 import first.robot.mechanisms.drivetrain.Drive;
+import first.robot.mechanisms.sensors.Ultrasonic;
 
 /**
  * The methods in this class are called automatically as described in the
@@ -30,6 +31,7 @@ public class Robot extends OpModeRobot {
 
   public final Drive drive = new Drive();
   public final Arm arm = new Arm();
+  public final Ultrasonic rangefinder = new Ultrasonic();
   public final XRPOnBoardIO xrpIO = new XRPOnBoardIO();
 
   /**
@@ -76,5 +78,9 @@ public class Robot extends OpModeRobot {
     Scheduler.getDefault().run();
     drive.logSpeeds();
   }
+
+  /*public void robotInit() {
+
+  }*/
 
 }

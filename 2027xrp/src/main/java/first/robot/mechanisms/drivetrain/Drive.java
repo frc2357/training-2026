@@ -71,6 +71,26 @@ public class Drive implements Mechanism {
         }).named("Auto Drive");
     }
 
+    public Command straight(double velocity) {
+        return this.run((coro) -> {
+            this.arcadeDrive(velocity, 0);
+        }).named("straight");
+    }
+
+    public Command turn(double degrees) {
+        return this.run((coro) -> {
+            final double startDegrees = m_gyro.getRateZ();
+            arcadeDrive(0, Math.signum(degrees));
+
+            coro.waitUntil(() -> startDegrees - m_gyro.getAngleZ() > 0);
+
+            arcadeDrive(0, 0);
+        }).named("turn");
+    }
+
+    public void flipRight(boolean polarity) {
+        this.m_rightMotor.setInverted(polarity);
+    }
     /**
      * This is an example of a coroutine command that can block robot code
      * and cause loop overruns by doing lots of looping
